@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: discuss_with_production
-  username: discuss_with
-  password: <%= ENV['DISCUSS_WITH_DATABASE_PASSWORD'] %>
+  database: <%= ENV['RDS_DATABASE'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOST'] %>
+  post: 5432
