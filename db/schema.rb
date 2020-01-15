@@ -14,8 +14,6 @@ ActiveRecord::Schema.define(version: 2020_01_13_175615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plperl"
-  enable_extension "plperlu"
-  enable_extension "plpgsql"
 
   create_table "people", force: :cascade do |t|
     t.string "name"
