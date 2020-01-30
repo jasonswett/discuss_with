@@ -38,5 +38,7 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 plugin :tmp_restart
 
 # For Elastic Beanstalk
-bind "unix:///var/run/puma/my_app.sock"
-pidfile "/var/run/puma/my_app.sock"
+if Rails.env.production?
+  bind "unix:///var/run/puma/my_app.sock"
+  pidfile "/var/run/puma/my_app.sock"
+end
