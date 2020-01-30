@@ -11,4 +11,13 @@ RSpec.describe 'Signing in', type: :feature do
 
     expect(page).to have_content('People')
   end
+
+  scenario 'invalid credentials' do
+    visit root_path
+    fill_in 'Email', with: ''
+    fill_in 'Password', with: ''
+    click_on 'Log in'
+
+    expect(page).to have_content('Invalid Email or password')
+  end
 end
