@@ -1,6 +1,6 @@
 <h1>People</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -12,9 +12,11 @@
     <% @people.each do |person| %>
       <tr>
         <td><%= person.name %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Show', person, class: 'btn btn-light btn-sm' %>
+          <%= link_to 'Edit', edit_person_path(person), class: 'btn btn-light btn-sm' %>
+          <%= link_to 'Destroy', person, class: 'btn btn-light btn-sm', method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Person', new_person_path %>
+<%= link_to 'New Person', new_person_path, class: 'btn btn-primary' %>
