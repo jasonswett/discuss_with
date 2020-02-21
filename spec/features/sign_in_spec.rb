@@ -7,7 +7,7 @@ RSpec.describe 'Signing in', type: :feature do
     visit root_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
-    click_on 'Log in'
+    find('.sign-in-button').click
 
     expect(page).to have_content('Signed in successfully', count: 1)
   end
@@ -16,7 +16,7 @@ RSpec.describe 'Signing in', type: :feature do
     visit root_path
     fill_in 'Email', with: ''
     fill_in 'Password', with: ''
-    click_on 'Log in'
+    find('.sign-in-button').click
 
     expect(page).to have_content('Invalid Email or password')
   end
