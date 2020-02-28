@@ -93,6 +93,15 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: ENV['HOST_URL'] }
 
+  config.action_mailer.smtp_settings = {
+    address:              'email-smtp.us-east-1.amazonaws.com',
+    port:                 587,
+    user_name:            ENV['SES_SMTP_USERNAME'],
+    password:             ENV['SES_SMTP_PASSWORD'],
+    authentication:       :login,
+    enable_starttls_auto: true
+  }
+
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write
