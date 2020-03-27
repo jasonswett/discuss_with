@@ -16,15 +16,14 @@ class PeopleController < ApplicationController
   end
 
   def create
-    @person = Person.new(person_params)
+    ActiveRecord::Base.transaction do
+      @person = Person.new(person_params)
 
-    respond_to do |format|
       if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
-        format.json { render :show, status: :created, location: @person }
+        current_user.people << @person
+        redirect_to people_path, notice: 'Person was successfully created.'
       else
-        format.html { render :new }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
+        render :new
       end
     end
   end
